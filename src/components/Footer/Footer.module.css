@@ -1,0 +1,37 @@
+.footer {
+    padding: 17px 0;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.social {
+    display: flex;
+    gap: 16px;
+    list-style: none;
+}
+
+.link {
+    color: #00C78B;
+    transition: color 0.4s ease-in-out;
+}
+
+.link:hover {
+    color: #00fc86;
+}
+
+@media (max-width: 480px) {
+    .wrapper {
+        flex-direction: column-reverse;
+        gap: 30px;
+    }
+} 
