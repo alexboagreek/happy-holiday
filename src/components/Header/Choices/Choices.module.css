@@ -7,7 +7,27 @@
     background-color: #00c78b;
     color: #FFFFFF;
 }
-
+.wrapper {
+    position: relative;
+}
+.list {
+    position: absolute;
+    list-style: none;
+    width: 300px;
+    padding: 20px 52px;
+    font-size: 18px;
+    background-color: #00c78b;
+    color: #FFFFFF;
+    border-radius: 30px;
+    top: 68px;
+}
+.item {
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+.item:last-child {
+    margin-bottom: 0;
+}
 @media (max-width: 1024px) {
     .button {
         width: 220px;
