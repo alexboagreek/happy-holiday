@@ -1,7 +1,6 @@
 import {useState, useEffect} from 'react';
 import { URI_API } from './../const/const';
 
-
 export const useText = (holiday) => {
     const [text, setText] = useState('Займешь косарь до зп?');
 
