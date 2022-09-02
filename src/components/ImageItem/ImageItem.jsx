@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
 import { imgContext } from './../../context/imgContext';
+import CardBG from '../../components/img/card-bg.jpg';
 
 const ImageItem = (props) => {
-    const img = useContext(imgContext);
+    const {urlImg} = useContext(imgContext);
     return (
-        <img width={840} height={520} src={props.img} alt="Фон открытки" />
+        <img src={urlImg || CardBG} width={840} height={520}  alt="Фон открытки" />
     ) 
 }
 
