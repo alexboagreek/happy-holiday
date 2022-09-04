@@ -1,11 +1,20 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { URI_API } from './../const/const';
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { URI_API } from "../constants/constants";
 
 export const fetchText = createAsyncThunk(
     'text/fetchText',
     async (holiday) => {
-        const response = await fetch(`${URI_API}image/${holiday}`);
-        const data = await response.json();
+        const res = await fetch(`${URI_API}/text/${holiday}`);
+        const data = await res.json();
+        return data;
+    }
+);
+
+export const fetchTextId = createAsyncThunk(
+    'text/fetchTextId',
+    async (id) => {
+        const res = await fetch(`${URI_API}/text/${id}`);
+        const data = await res.json();
         return data;
     }
 );
@@ -17,9 +26,8 @@ const textSlice = createSlice({
         idText: '',
         loading: '',
     },
-    reducers: {},
     extraReducers: {
-        [fetchText.pending]: state => {
+        [fetchText.pending]: (state) => {
             state.loading = 'loading';
             state.text = '';
             state.idText = '';
@@ -28,14 +36,28 @@ const textSlice = createSlice({
             state.loading = 'success';
             state.text = action.payload.text;
             state.idText = action.payload.idText;
-
         },
-        [fetchText.rejected]: state => {
+        [fetchText.rejected]: (state) => {
+            state.loading = 'failed';
+            state.text = '';
+            state.idText = '';
+        },
+        [fetchTextId.pending]: (state) => {
+            state.loading = 'loading';
+            state.text = '';
+            state.idText = '';
+        },
+        [fetchTextId.fulfilled]: (state, action) => {
+            state.loading = 'success';
+            state.text = action.payload.text;
+            state.idText = action.payload.idText;
+        },
+        [fetchTextId.rejected]: (state) => {
             state.loading = 'failed';
             state.text = '';
             state.idText = '';
         },
     }
-})
+});
 
 export default textSlice.reducer;
